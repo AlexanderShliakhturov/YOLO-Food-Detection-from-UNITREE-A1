@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Главная
+{% endblock %}
+
+{% block script %}
+<script src="/static/js/jquery.js"></script>
+<script src="/static/js/getCookies.js"></script>
+<script>
+    var send_bag_url = '';
+    var get_video_url = '';
+</script>
+<script src="/static/js/uploadFile.js"></script>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container box">
+
+        <div id="step-1">
+            <form action="/upload-file" method="post" id="file-upload-form" enctype="multipart/form-data">
+                <input type="file" name="file">
+                <button type="submit" class="btn btn-primary" id='upload-btn'>Upload</button>
+            </form>
+        </div>
+        <div class="d-flex justify-content-center">
+            <div id="loading" class="spinner-border" role="status" style="display: none; width: 5rem; height: 5rem;">
+                <span class="visually-hidden">Загрузка...</span>
+            </div>
+        </div>
+            
+        <div id="step-2" style="display: none;">
+            <div id="rgb-video">
+                <h4>RGB</h4>
+            </div>
+            <div id="depth-video" >
+                <h4>Depth</h4>
+            </div>
+            <div id="pipline-video">
+                <h4>Pipline</h4>
+            </div>
+        </div>
+        <div id="error" style="display: none;">Отправлен файл с неверным расширением </div>
+
+</div>
+<script src="https://vjs.zencdn.net/7.10.2/video.min.js"></script>
+{% endblock %}
+
